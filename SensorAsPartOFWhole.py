@@ -38,7 +38,7 @@ while True:
   for pin in range(0,4):
     xpin = StepPins[pin]
     if Seq[StepCounter][pin] !=0:
-    print('Enable GPIO%1'%(xpin))
+      print('Enable GPIO%1'%(xpin))
     GPIO.output(xpin, True)
   else:
     GPIO.output(xpin, False)
