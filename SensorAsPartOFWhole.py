@@ -1,4 +1,5 @@
 ##This program is to get the motor to run. 
+##Stepper.py is the code i use to update this off of the pi
 
 
 #first set up the motor to run/
