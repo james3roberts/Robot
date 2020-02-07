@@ -1,4 +1,5 @@
 ##This is to get the distance1 sensor to get lengths.
+## Code is from DistanceSensor on the pi. 
 
 import RPi.GPIO as GPIO
 import time
@@ -11,7 +12,7 @@ while i:
 
         GPIO.setup(PIN_TRIGGER, GPIO.OUT)
         GPIO.setup(PIN_ECHO, GPIO.IN)
-        
+
         GPIO.setup(PIN_TRIGGER, GPIO.LOW)
         print('wAITING FOR SENSOR TO SETTLE')
         time.sleep(2)
