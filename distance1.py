@@ -8,8 +8,10 @@ while i:
         GPIO.setmode(GPIO.BOARD)
         PIN_TRIGGER = 33
         PIN_ECHO = 37
+
         GPIO.setup(PIN_TRIGGER, GPIO.OUT)
         GPIO.setup(PIN_ECHO, GPIO.IN)
+        
         GPIO.setup(PIN_TRIGGER, GPIO.LOW)
         print('wAITING FOR SENSOR TO SETTLE')
         time.sleep(2)
