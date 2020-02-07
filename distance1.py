@@ -8,8 +8,10 @@ while i:
         GPIO.setmode(GPIO.BOARD)
         PIN_TRIGGER = 33
         PIN_ECHO = 37
+        GPIO.setup(PIN_TRIGGER, GPIO.OUT)
+        GPIO.setup(PIN_ECHO, GPIO.IN)
         GPIO.setup(PIN_TRIGGER, GPIO.LOW)
-        PRINT('wAITING FOR SENSOR TO SETTLE')
+        print('wAITING FOR SENSOR TO SETTLE')
         time.sleep(2)
         print('Calculating the distance')
         GPIO.output(PIN_TRIGGER, GPIO.HIGH)
@@ -18,13 +20,14 @@ while i:
         
         while GPIO.input (PIN_ECHO)==0:
             pulse_start_time = time.time()
-         while GPIO.input (PIN_ECHO)==1:
+        while GPIO.input (PIN_ECHO)==1:
             pulse_end_time = time.time()
 
-        pulse_duration = pulse_end_tiem - pulse_start_time
+        pulse_duration = pulse_end_time - pulse_start_time
         distance= round(pulse_duration * 17150 /2)
         print('Distance: ', distance, "cm")
         distanceIn = (distance / 2.54)
         print('Distance: ',distanceIn, "Inches")
     finally:
         GPIO.cleanup()
+## This code workes and get a new number until told to stop. 
