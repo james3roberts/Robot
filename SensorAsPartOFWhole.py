@@ -1,30 +1,50 @@
 ##This program is to get the motor to run. 
-##Made on 2/5/20 Might need improved. found on medium. 
+
 
 #first set up the motor to run/
 import sys
-import PRi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 #if these do not work try 17,12,27,22
-control.pins = [11,12,13,15]
-for pin in control_pins:
+control.pins = [17,18,27,22]
+for pin in StepPins:
+  print('Setup pins')
   GPIO.setup(pin, GPIO.OUT)
-  GPIO.output(pin, 0)
-halfstep_seq = [
+  GPIO.output(pin, False)
+  #improvement have been made from old code. runs much better. 
+Seq = [
+  [1,0,0,1],
   [1,0,0,0],
   [1,1,0,0],
   [0,1,0,0],
   [0,1,1,0],
   [0,0,1,0],
   [0,0,1,1],
-  [0,0,0,1],
-  [1,0,0,1]
+  [0,0,0,1]
 ]
-for i in range(512):
-  for halfstep in range(8):
-    for pin in range(4):
-      GPIO.output(control_pins[pin], halfstep_seq[halfstep][pin])
-    time.sleep(0.001)
-GPIO.cleanup()
+StepCount = len(Seq)
+StepDir = 2
+if len (sys.argv)>1:
+  WaitTime = int(sys.argv[1])/float(1000)
+else:WaitTime = 10/float(1000)
+StepCounter = 0
+while True:
+  print(StepCount, )
+  print(Seq[StepCounter])
+
+  for pin in range(0,4):
+    xpin = StepPins[pin]
+    if Seq[StepCounter][pin] !=0:
+    print('Enable GPIO%1'%(xpin))
+    GPIO.output(xpin, True)
+  else:
+    GPIO.output(xpin, False)
+  StepCounter += StepDir
+  if (StepCounter>= StepCount):
+    StepCounter = 0
+  if(StepCounter <0):
+    StepCounter = StepCount + StepDir
+  time.sleep(WaitTime)
+
