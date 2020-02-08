@@ -31,6 +31,7 @@ while i:
         print('Distance: ', distance, "cm")
         distanceIn = (distance / 2.54)
         print('Distance: ',distanceIn, "Inches")
+        get_value = distance
     finally:
         GPIO.cleanup()
 ## This code workes and get a new number until told to stop. 
