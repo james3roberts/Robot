@@ -27,8 +27,10 @@ Seq = [
 ]
 StepCount = len(Seq)
 StepDir = 2
+#if statement is from code on the pi. 
 if len (sys.argv)>1:
   WaitTime = int(sys.argv[1])/float(1000)
+
 else:WaitTime = 10/float(1000)
 StepCounter = 0
 while True:
@@ -40,8 +42,12 @@ while True:
     if Seq[StepCounter][pin] !=0:
 
       #the print line does not work and I think that is breaking the code
+      #print('Enable GPIO %1' %(xpin))
       
-      print('Enable GPIO%1' %(xpin))
+      #new print line with new formatting
+      #the new print line does not kick error.
+      print('Enable GPIO{%1}'.format(xpin))
+
       GPIO.output(xpin, True)
   else:
     GPIO.output(xpin, False)
