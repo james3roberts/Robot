@@ -8,8 +8,8 @@ import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BCM)
-#if these do not work try 17,12,27,22
-control.pins = [17,18,27,22]
+#had the wrong variable called
+StepPins = [17,18,27,22]
 for pin in StepPins:
   print('Setup pins')
   GPIO.setup(pin, GPIO.OUT)
@@ -38,8 +38,11 @@ while True:
   for pin in range(0,4):
     xpin = StepPins[pin]
     if Seq[StepCounter][pin] !=0:
-      print('Enable GPIO%1'%(xpin))
-    GPIO.output(xpin, True)
+
+      #the print line does not work and I think that is breaking the code
+      
+      print('Enable GPIO%1' %(xpin))
+      GPIO.output(xpin, True)
   else:
     GPIO.output(xpin, False)
   StepCounter += StepDir
