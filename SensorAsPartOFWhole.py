@@ -1,8 +1,5 @@
 #This code is emailed from the raspberry pi
-#it works fine on the pi so now we need to see
-#if it will work from here. 
-#new porbles with the pushing.
-#i guess deleting and starting over was a bad idea
+#it works on the pi. 
 
 
 import sys
