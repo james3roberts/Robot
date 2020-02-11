@@ -9,15 +9,12 @@
 # this should get the sensor to run and stop at 6cm
 #I added the while statement to see if this will get it to keep running
 # added the print statement to get the distance. 
-# dont know what will work and cant check itto
+#Ths loop is broken. it only runs the distance not the motor. 
+#this loop only imports the distance and des nothing else
 
 import time
+import SensorAsPartOFWhole
+import distance1
 
-from distance1 import distance
-while distance <=6:
-    print(distance)
-    import SensorAsPartOFWhole
-else:
-    exit()
+##Back to the drawing board. 
 
-#if this works then we need to add another sensor and a button.
