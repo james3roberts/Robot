@@ -1,54 +1,69 @@
-##This program is to get the motor to run. 
-##Stepper.py is the code i use to update this off of the pi
+#This code is emailed from the raspberry pi
+#it works fine on the pi so now we need to see
+#if it will work from here. 
 
 
-#first set up the motor to run/
 import sys
-import RPi.GPIO as GPIO
 import time
+import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
-#had the wrong variable called
 StepPins = [17,18,27,22]
+
 for pin in StepPins:
-  print('Setup pins')
-  GPIO.setup(pin, GPIO.OUT)
+  print ("Setup pins")
+  GPIO.setup(pin,GPIO.OUT)
   GPIO.output(pin, False)
-  #improvement have been made from old code. runs much better. 
-Seq = [
-  [1,0,0,1],
-  [1,0,0,0],
-  [1,1,0,0],
-  [0,1,0,0],
-  [0,1,1,0],
-  [0,0,1,0],
-  [0,0,1,1],
-  [0,0,0,1]
-]
+
+Seq = [[1,0,0,1],
+       [1,0,0,0],
+       [1,1,0,0],
+       [0,1,0,0],
+       [0,1,1,0],
+       [0,0,1,0],
+       [0,0,1,1],
+       [0,0,0,1]]
+
+
 StepCount = len(Seq)
-StepDir = 2
-if len (sys.argv)>1:
+
+StepDir = 2 # Set to 1 or 2 for clockwise
+            # Set to -1 or -2 for anti-clockwise
+
+ 
+if len(sys.argv)>1:
   WaitTime = int(sys.argv[1])/float(1000)
-else:WaitTime = 10/float(1000)
+ 
+  
+else:
+  WaitTime = 10/float(1000)
+
 StepCounter = 0
+
 while True:
-  print(StepCount, )
-  print(Seq[StepCounter])
 
-  for pin in range(0,4):
+  print (StepCounter,)
+  print (Seq[StepCounter])
+
+  for pin in range(0, 4):
     xpin = StepPins[pin]
-    if Seq[StepCounter][pin] !=0:
-
-      #the print line does not work and I think that is breaking the code
-      
-      print('Enable GPIO%1' %(xpin))
+    if Seq[StepCounter][pin]!=0:
+      print (" Enable GPIO %i" %(xpin))
       GPIO.output(xpin, True)
-  else:
-    GPIO.output(xpin, False)
-  StepCounter += StepDir
-  if (StepCounter>= StepCount):
-    StepCounter = 0
-  if(StepCounter <0):
-    StepCounter = StepCount + StepDir
-  time.sleep(WaitTime)
+    else:
+      GPIO.output(xpin, False)
 
+  StepCounter += StepDir
+
+
+  if (StepCounter>=StepCount):
+    StepCounter = 0
+  if (StepCounter<0):
+    StepCounter = StepCount+StepDir
+
+  time.sleep(WaitTime)
+print(StepCounter)
+#This does not pring on linux or idle. Figure this out so you can get a total distance
+print('I have no control over this')
+print('I dont even understand how this works')
+print('Finally figured something out')
