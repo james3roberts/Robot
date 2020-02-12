@@ -16,10 +16,10 @@ import sys
 
 i = '0'
 while i:
-    try:
-        GPIO.setmode(GPIO.BOARD)
-        PIN_TRIGGER = 33
-        PIN_ECHO = 37
+    try:    #Changign the gpio to bcm worked but it is just printing the seequence instead of running the motor. 
+        GPIO.setmode(GPIO.BCM)#what not bcm was BOARD
+        PIN_TRIGGER = 13#was 33
+        PIN_ECHO = 26#was37
 
         GPIO.setup(PIN_TRIGGER, GPIO.OUT)
         GPIO.setup(PIN_ECHO, GPIO.IN)
