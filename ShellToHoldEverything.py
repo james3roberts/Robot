@@ -14,7 +14,9 @@
 
 import time
 
-
+import distance1
+if distance1.get_distance()<=10:
+    import SensorAsPartOFWhole
 
 
 
