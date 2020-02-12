@@ -13,8 +13,9 @@
 #this loop only imports the distance and des nothing else
 
 import time
-import SensorAsPartOFWhole
-import distance1
 
-##Back to the drawing board. 
+
+
+
+
 
