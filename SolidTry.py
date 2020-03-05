@@ -1,4 +1,4 @@
-#maybe the proble is that I keep trying to make things to complicated
+#maybe the problem is that I keep trying to make things to complicated
 #what if I just make 1 big program and call it a day.
 #as i start this it is 11pm and I cant sleep
 #too much stress and a feeling of needing to get a win no matter how small
@@ -25,7 +25,7 @@ while i:
         GPIO.setup(PIN_ECHO, GPIO.IN)
 
         GPIO.setup(PIN_TRIGGER, GPIO.LOW)
-        print('wAITING FOR SENSOR TO SETTLE')
+        print('WAITING FOR SENSOR TO SETTLE')
         time.sleep(2)
         print('Calculating the distance')
         GPIO.output(PIN_TRIGGER, GPIO.HIGH)
@@ -42,6 +42,8 @@ while i:
         print('Distance: ', distance, "cm")
         distanceIn = (distance / 2.54)
         print('Distance: ',distanceIn, "Inches")
+
+        ##this is the start of the motor. At this point it does nothing. 
         if distance <=10:
             GPIO.setmode(GPIO.BCM)
             StepPins = [17,18,27,22]
