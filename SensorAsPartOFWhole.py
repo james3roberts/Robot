@@ -62,7 +62,3 @@ while True:
 
   time.sleep(WaitTime)
 print(StepCounter)
-#This does not pring on linux or idle. Figure this out so you can get a total distance
-print('I have no control over this')
-print('I dont even understand how this works')
-print('Finally figured something out')
